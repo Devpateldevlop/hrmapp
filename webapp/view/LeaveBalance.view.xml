@@ -1,0 +1,123 @@
+<mvc:View xmlns:core="sap.ui.core"
+    xmlns:cards="sap.f.cards"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f" controllerName="hrmate.controller.LeaveBalance"
+    xmlns="sap.suite.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:m="sap.m">
+    <m:Page title="Leave Balance" titleAlignment="Center" showHeader="false">
+        <f:DynamicPage id="dynamicPageLeaveBalance" preserveHeaderStateOnScroll="true" showFooter="true" fitContent="true">
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <m:Title text="Apply Leave"/>
+                    </f:heading>
+                    <f:expandedContent>
+                        <m:Label design="Bold" text="{maindata>/EmployeeCode}"/>
+                    </f:expandedContent>
+                    <f:snappedContent>
+                        <m:Label design="Bold" text="{maindata>/EmployeeCode}"/>
+                    </f:snappedContent>
+                    <f:snappedTitleOnMobile>
+                        <m:Title text="{maindata>/EmployeeCode}"/>
+                    </f:snappedTitleOnMobile>
+                    <f:actions>
+                        <m:ToolbarSpacer/>
+                        <m:VBox class="sapUiSmallMarginTop">
+                            <m:ObjectAttribute title="Employee Name" text="{maindata>/profile/firstName} {maindata>/profile/lastName}"/>
+                            <m:ObjectAttribute title="Applied Date" text="{maindata>/currentDate}" />
+                        </m:VBox>
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+            <f:content>
+
+
+                <layout:Grid defaultSpan="XL6 L6 M12 S12" class="sapUiTinyMarginTop">
+
+
+                    <f:Card height="auto" class="sapUiTinyMarginTop">
+                        <f:layoutData>
+                            <layout:GridData span="XL6 L6 M12 S12" />
+                        </f:layoutData>
+                        <f:content>
+                            <commons:ChartContainer showFullScreen="true" showLegend="true" showZoom="true" showLegendButton="true">
+                                <commons:ChartContainerContent>
+                                    <commons:content>
+                                        <viz:VizFrame id="idVizFram" vizType="donut" height="312px" selectData="onselectitemdeduction" deselectData="ondeselectData" vizProperties='{
+        "dataLabel": { "visible": true, "showTotal": true },
+        "legend": { "visible": true },  
+        "title": { "text": "Deductions" },
+        "plotArea": {
+            "dataLabel": { "visible": true, "showTotal": true },
+            "drawingEffect": "glossy"
+        }
+    }'>
+
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{DeductionData>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="name" value="{DeductionData>name}" />
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="amount" value="{DeductionData>amount}" />
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem uid="size" type="Measure" values="amount" />
+                                                <viz.feeds:FeedItem uid="color" type="Dimension" values="name" />
+                                            </viz:feeds>
+
+                                        </viz:VizFrame>
+                                    </commons:content>
+                                </commons:ChartContainerContent>
+                            </commons:ChartContainer>
+
+
+                        </f:content>
+                    </f:Card>
+
+
+                    <f:Card height="auto" class="sapUiTinyMarginTop sapUiResponsiveContentPadding">
+                        <f:layoutData>
+                            <layout:GridData span="XL6 L6 M12 S12" />
+                        </f:layoutData>
+                        <f:header>
+                            <cards:Header title="Add Deduction"></cards:Header>
+                        </f:header>
+                        <f:content>
+                            <form:SimpleForm layout="ResponsiveGridLayout" labelSpanXL="4" class="sapUiSmallMargintop sapUiSmallMarginEnd sapUiSmallMarginBegin" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                                <form:content>
+                                    <m:MessageStrip id="deductionMessageStri" text="Add A New Deduction Details." showIcon="true" type="Information" />
+                                    <m:Label design="Bold" text="Deduction Type"/>
+                                    <m:Input value="{DeductionaddModel>/name}">
+                                    </m:Input>
+
+                                    <m:Label design="Bold" text="Deduction Amount"/>
+                                    <m:Input type="Number" value="{DeductionaddModel>/amount}" />
+
+                                    <m:Label design="Bold" text="Deduction Description"/>
+                                    <m:Input value="{DeductionaddModel>/description}" />
+
+                                    <m:Button press="onAddDeductionDetails" text="Add Details" type="Emphasized" icon="sap-icon://add-contact"></m:Button>
+
+                                </form:content>
+                            </form:SimpleForm>
+
+
+                        </f:content>
+                    </f:Card>
+
+
+                </layout:Grid>
+            </f:content>
+        </f:DynamicPage>
+    </m:Page>
+</mvc:View>

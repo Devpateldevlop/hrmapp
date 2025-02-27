@@ -1,0 +1,143 @@
+<mvc:View xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f" controllerName="hrmate.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <App>
+        <Page showHeader="false">
+            <uxap:ObjectPageLayout id="ObjectPageLayoutProfile" enableLazyLoading="true" beforeNavigate="onBeforeNavigate" useIconTabBar="false" showTitleInHeaderContent="true" upperCaseAnchorBar="false" visible="{= ${maindata>/profile/role} === 'Employee'}">
+
+                <!-- Header Title Section -->
+                <uxap:headerTitle>
+                    <uxap:ObjectPageDynamicHeaderTitle>
+                        <uxap:expandedHeading>
+                            <FlexBox>
+                                <items>
+                                    <Avatar src="{maindata>/profile/profileImage}" class="sapUiTinyMarginEnd" showBorder="true"/>
+                                    <Title text="{maindata>/profile/firstName} {maindata>/profile/lastName}" wrapping="true" class="sapUiSmallMarginTop" />
+                                </items>
+                            </FlexBox>
+                        </uxap:expandedHeading>
+                        <uxap:snappedHeading>
+                            <FlexBox fitContainer="true" alignItems="Center">
+                                <Avatar src="{maindata>/profile/profileImage}" showBorder="true" class="sapUiTinyMarginEnd"/>
+                            </FlexBox>
+                        </uxap:snappedHeading>
+                        <uxap:expandedContent>
+                            <Text text="{maindata>/profile/Designation}" />
+                        </uxap:expandedContent>
+                        <uxap:snappedContent>
+                            <Text text="{maindata>/profile/Designation}"/>
+                        </uxap:snappedContent>
+                        <uxap:snappedTitleOnMobile>
+                            <Title text="{maindata>/profile/Designation}"/>
+                        </uxap:snappedTitleOnMobile>
+                        <uxap:actions>
+                            <Button text="" class="sapUiTinyMargin" type="Ghost"/>
+                            <Button icon="sap-icon://settings" class="sapUiTinyMargin" type="Emphasized"/>
+                        </uxap:actions>
+                    </uxap:ObjectPageDynamicHeaderTitle>
+                </uxap:headerTitle>
+
+
+                <!-- Header Content Section -->
+                <!-- <uxap:headerContent>
+                    <layout:VerticalLayout class="sapUiSmallMargin">
+                        <Text text="+33 6 4512 5158"/>
+                        <Text text="DeniseSmith@sap.com"/>
+                        <Label text="San Jose, USA"/>
+                    </layout:VerticalLayout>
+                    
+                </uxap:headerContent> -->
+                <uxap:sections>
+                    <uxap:ObjectPageSection showTitle="false">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <!-- <layout:Grid defaultSpan="L6 M4 S6" hSpacing="1" vSpacing="1"> -->
+                                <!-- <layout:BlockLayout>
+<layout:BlockLayoutRow>
+<layout:BlockLayoutCell width="1"> -->
+                                <!-- <Text text="wewewewew"></Text  > -->
+
+                                <VBox width="100%">
+                                    <FlexBox wrap="Wrap" justifyContent="Center" alignItems="Center">
+                                        <items>
+                                            <GenericTile id="puchin" class="sapUiTinyMargin " sizeBehavior="Small" header="Punch In" frameType="OneByOne" press="onPunchIn">
+                                                <TileContent >
+                                                    <!-- <NumericContent value="IN" withMargin="true" /> -->
+                                                    <core:Icon src="sap-icon://physical-activity" size="3rem" color="blue"></core:Icon>
+
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile id="punchout" class="sapUiTinyMargin" sizeBehavior="Small" header="Punch Out" frameType="OneByOne" press="onPunchOut">
+                                                <TileContent>
+                                                    <!-- <NumericContent value="OUT" withMargin="true" /> -->
+                                                    <core:Icon src="sap-icon://offsite-work" size="3rem" color="blue"></core:Icon>
+
+                                                </TileContent>
+                                            </GenericTile>
+                                        </items>
+
+                                    </FlexBox>
+                                    <FlexBox wrap="Wrap" justifyContent="Center" alignItems="Center">
+                                        <items>
+
+                                            <GenericTile class="sapUiTinyMargin tile-profile " sizeBehavior="Small" header="Profile" frameType="OneByHalf" press="onProfile">
+                                                <TileContent>
+                                                    <NumericContent value="View" withMargin="true" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile class="sapUiTinyMargin tile-payslip" sizeBehavior="Small" header="Payslip" frameType="OneByHalf" press="onPayslip">
+                                                <TileContent>
+                                                    <NumericContent value="View" withMargin="true" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile class="sapUiTinyMargin tile-calendar" sizeBehavior="Small" header="Calendar" frameType="OneByHalf" press="onCalendar">
+                                                <TileContent>
+                                                    <NumericContent value="Schedule" withMargin="true" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile class="sapUiTinyMargin tile-leave" sizeBehavior="Small" header="Leave Management" frameType="OneByHalf" press="onLeave">
+                                                <TileContent>
+                                                    <NumericContent value="Apply" withMargin="true" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile class="sapUiTinyMargin tile-history " sizeBehavior="Small" header="Punch History" frameType="OneByHalf" press="onPunchHistory">
+                                                <TileContent>
+                                                    <NumericContent value="View" withMargin="true" />
+                                                </TileContent>
+                                            </GenericTile>
+                                            <GenericTile class="sapUiTinyMargin roundCornerTiles shado" sizeBehavior="Small" header="Profile" frameType="OneByHalf" press="onProfile2">
+                                                <TileContent>
+                                                    <NumericContent value="View" withMargin="true" />
+                                                </TileContent>
+                                            </GenericTile>
+                                        </items>
+                                    </FlexBox>
+                                </VBox>
+
+                                <!-- </layout:BlockLayoutCell>
+
+</layout:BlockLayoutRow>
+</layout:BlockLayout> -->
+                                <!-- </layout:Grid> -->
+
+
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                </uxap:sections>
+
+            </uxap:ObjectPageLayout>
+
+
+
+
+
+          
+        </Page>
+    </App>
+
+</mvc:View>

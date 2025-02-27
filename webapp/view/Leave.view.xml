@@ -1,0 +1,30 @@
+<mvc:View xmlns:core="sap.ui.core"
+  xmlns:layout="sap.ui.layout"
+  xmlns:tnt="sap.tnt"
+  xmlns:f="sap.f" controllerName="hrmate.controller.Leave"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page title="Leave" titleAlignment="Center" showHeader="false">
+    <!-- <tnt:NavigationList id="navigationList" selectedKey="subItem3">
+		<tnt:NavigationListItem text="Apply Leave" key="rootItem1" icon="sap-icon://employee"/>
+		<tnt:NavigationListItem text="Leave Balance" key="rootItem1" icon="sap-icon://employee"/>
+
+    	</tnt:NavigationList> -->
+
+    <!-- <List class="sapUiSmallMarginTop">
+      <ObjectListItem icon="sap-icon://appointment" navigated="true" type="Active" press="onListItemPress" number="Apply Leave">
+      </ObjectListItem>
+
+      <ObjectListItem icon="sap-icon://pie-chart" navigated="true" type="Active" press="leave_balance" number="Leave Balance">
+
+      </ObjectListItem>
+    </List> -->
+
+      <List  id="ShortProductList">
+        <items>
+          <StandardListItem press="listpressApplyLeave" type="Active" detailPress="listpress" title="Apply Leave" icon="./image/calendar.png" />
+          <StandardListItem press="listpressLeaveBalance" type="Active" detailPress="listpress" title="Leave Balance" icon="./image/pie-chart.png" />
+        </items>
+      </List>
+  </Page>
+</mvc:View>

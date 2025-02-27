@@ -1,0 +1,11 @@
+<mvc:View xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f" controllerName="hrmate.controller.PunhcHistory"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+   
+    
+
+</mvc:View>

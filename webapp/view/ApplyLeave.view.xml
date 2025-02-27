@@ -1,0 +1,130 @@
+<mvc:View xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f" controllerName="hrmate.controller.ApplyLeave">
+    
+    <f:DynamicPage id="dynamicPageId" preserveHeaderStateOnScroll="true"  showFooter="true" fitContent="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Apply Leave"/>
+                </f:heading>
+                <f:expandedContent>
+                    <Label design="Bold" text="{maindata>/EmployeeCode}"/>
+                </f:expandedContent>
+                <f:snappedContent>
+                    <Label design="Bold" text="{maindata>/EmployeeCode}"/>
+                </f:snappedContent>
+                <f:snappedTitleOnMobile>
+                    <Title text="{maindata>/EmployeeCode}"/>
+                </f:snappedTitleOnMobile>
+                <f:actions>
+                    <ToolbarSpacer/>
+                    <!-- <Button text="Edit" type="Emphasized"/>
+                    <Button text="Delete" type="Transparent"/>
+                    <Button text="Copy" type="Transparent"/>
+                    <Button icon="sap-icon://action" type="Transparent"/> -->
+                    <VBox class="sapUiSmallMarginTop">
+                        <ObjectAttribute title="Employee Name"  text="{maindata>/profile/firstName} {maindata>/profile/lastName}"/>
+                        <ObjectAttribute title="Applied Date" text="{maindata>/currentDate}" />
+                    </VBox>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+            <layout:BlockLayout background="Dashboard">
+                <layout:BlockLayoutRow>
+                    <layout:BlockLayoutCell>
+
+
+                        <form:SimpleForm id="idApplyLeaveForm" editable="false" layout="ResponsiveGridLayout"  labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                            <form:content>
+        
+
+                                <Label design="Bold" text="Leave Type" />
+                                <Select id="idLeaveType">
+                                    <items>
+                                        <core:Item key="Sick" text="Sick Leave" />
+                                        <core:Item key="Casual" text="Casual Leave" />
+                                        <core:Item key="Compensatory" text="Compensatory Leave" />
+                                        <core:Item key="LWP" text="Leave Without Pay" />
+                                    </items>
+                                </Select>
+
+                                <Label design="Bold" text="Leave Balance" />
+                                <Input id="idLeaveBalance" value="{EmployeeModel>/LeaveBalance}" editable="false" />
+
+                                <Label text="From Date/Day Type" design="Bold"/>
+                                <DatePicker id="idStartDate">
+                                    <layoutData>
+                                        <layout:GridData span="XL6 L6 M6 S6" />
+                                    </layoutData>
+                                </DatePicker>
+                               <Select id="FromDateDayType"  forceSelection="false" selectedKey="">
+                                    <items>
+                                        <core:Item key="Firsthalf" text="First Half" />
+                                        <core:Item key="Secondhalf" text="Second Half" />
+                                         <core:Item key="FullDay" text="Full Day" />
+                                        <!-- <core:Item key="Compensatory" text="Compensatory Leave" />
+                                        <core:Item key="LWP" text="Leave Without Pay" /> -->
+                                    </items>
+                                    <layoutData>
+                                        <layout:GridData span="XL6 L6 M6 S6" />
+                                    </layoutData>
+                                </Select>
+
+
+                                <Label text="To Date/Day Type" design="Bold"/>
+                                <DatePicker >
+                                    <layoutData>
+                                        <layout:GridData span="XL6 L6 M6 S6" />
+                                    </layoutData>
+                                </DatePicker>
+                                <Select id="ToDateDayType" forceSelection="false" selectedKey="">
+                                    <items>
+                                        <core:Item key="Firsthalf" text="First Half" />
+                                        <core:Item key="Secondhalf" text="Second Half" />
+                                        <core:Item key="FullDay" text="Full Day" />
+                                        <!-- <core:Item key="Compensatory" text="Compensatory Leave" />
+                                        <core:Item key="LWP" text="Leave Without Pay" /> -->
+                                    </items>
+                                    <layoutData>
+                                        <layout:GridData span="XL6 L6 M6 S6" />
+                                    </layoutData>
+                                </Select>
+
+
+                             <Label design="Bold" text="Total Leave Day " />
+                                <Input id="TotalLeaveDay" value="{EmployeeModel>/TotalDay}" editable="false" />
+
+
+
+                                <Label design="Bold" text="Remarks" />
+                                <TextArea id="idRemarks" rows="3" placeholder="Enter your remarks..." />
+
+                                <Label design="Bold" text="Email Notification To" />
+                                <Input id="idEmailNotification" placeholder="Enter Email ID" />
+
+                                <Label design="Bold" text="Add Attachment" />
+
+                                <unified:FileUploader id="idFileUploader" width="100%"></unified:FileUploader>
+
+
+                                <!-- Buttons -->
+                                <Toolbar>
+                                    <ToolbarSpacer />
+                                    <Button text="Cancel" type="Reject" press="onCancelLeave"></Button>
+                                    <Button text="Submit" type="Emphasized" press="onSubmitLeave"></Button>
+                                </Toolbar>
+                            </form:content>
+                        </form:SimpleForm>
+                    </layout:BlockLayoutCell>
+                </layout:BlockLayoutRow>
+            </layout:BlockLayout>
+        </f:content>
+
+    </f:DynamicPage>
+</mvc:View>
