@@ -6,13 +6,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/m/MessageBox"], (Controller, M
 
     },
     listpressApplyLeave: function (oEvent) {
-      sap.ui.core.BusyIndicator.show();
+      // sap.ui.core.BusyIndicator.show();
       const oRouter = this.getOwnerComponent().getRouter();
       oRouter.navTo("RouteView11");
     },
 
     listpressLeaveBalance: function (oEvent) {
-      sap.ui.core.BusyIndicator.show();
+      // sap.ui.core.BusyIndicator.show();
       const oRouter = this.getOwnerComponent().getRouter();
       oRouter.navTo("RouteView5");
     }

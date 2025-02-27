@@ -15,7 +15,7 @@
             <f:title>
                 <f:DynamicPageTitle>
                     <f:heading>
-                        <m:Title text="Apply Leave"/>
+                        <m:Title text="Leave Balance"/>
                     </f:heading>
                     <f:expandedContent>
                         <m:Label design="Bold" text="{maindata>/EmployeeCode}"/>
